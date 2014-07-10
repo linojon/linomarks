@@ -1,3 +1,5 @@
+require "uri"
+
 class IncomingController < ApplicationController
 
   # http://stackoverflow.com/questions/1177863/how-do-i-ignore-the-authenticity-token-for-specific-actions-in-rails
@@ -9,11 +11,13 @@ class IncomingController < ApplicationController
     logger.info "INCOMING PARAMS HERE: #{params}"
     logger.info "keys: #{params.keys}"
     logger.info "stripped-text: #{params['stripped-text']}"
-    
+
     email = params[:sender] 
     user = User.find_by_email email
     topic = /#(\w*)/.match(params[:subject])[1] # e.g "foo #tag bar"
-    link  = params['stripped-text'] # todo: parse link
+    # http://stackoverflow.com/questions/3665072/extract-url-from-text
+    link  =  URI.extract(params['stripped-text']).first
+
 
     if user
       ok = user.bookmarks.create topic: topic, link: link
