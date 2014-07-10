@@ -1,0 +1,11 @@
+%h1 Bookmarks
+
+%table.table
+  - bookmarks.each do |bookmark|
+    %tr
+      %td= bookmark.link
+      %td= bookmark.topic
+      %td= bookmark.user.email
+
+%p
+  = link_to 'Add', new_bookmark_path, class: 'btn btn-primary'

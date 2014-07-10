@@ -48,7 +48,7 @@ gem 'redcarpet'
 gem 'pundit'
 gem 'decent_exposure'
 gem 'figaro', '~> 1.0.0.rc1'
-
+gem 'heroku'
 
 group :development, :test do
   gem 'sqlite3'

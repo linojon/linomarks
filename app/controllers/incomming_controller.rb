@@ -6,11 +6,24 @@ class IncomingController < ApplicationController
   def create
     # Take a look at these in your server logs
     # to get a sense of what you're dealing with.
-byebug
     logger.info "INCOMING PARAMS HERE: #{params}"
 
-    # You put the message-splitting and business
-    # magic here. 
+    email = params[:sender] 
+    user = User.find_by_email email
+    topic = /#(\w*)/.match(parms[:subject])[1] # e.g "foo #tag bar"
+    link  = params[:stripped_text] # todo: parse link
+
+    if user
+      ok = user.bookmarks.create topic: topic, link: link
+      if ok
+        logger.info "Created bookmark: #{topic}: #{link}"
+      else
+        logger.info "failed to create bookmark: #{topic}: #{link}"
+      end
+      
+    else
+      logger.info "unknown user #{email}"
+    end
 
     # Assuming all went well. 
     head 200
