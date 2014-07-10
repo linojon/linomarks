@@ -47,6 +47,8 @@ gem 'bootstrap-sass', '~> 3.1.1'
 gem 'redcarpet'
 gem 'pundit'
 gem 'decent_exposure'
+gem 'figaro', '~> 1.0.0.rc1'
+
 
 group :development, :test do
   gem 'sqlite3'
