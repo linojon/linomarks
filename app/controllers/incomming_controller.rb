@@ -7,7 +7,9 @@ class IncomingController < ApplicationController
     # Take a look at these in your server logs
     # to get a sense of what you're dealing with.
     logger.info "INCOMING PARAMS HERE: #{params}"
-
+    logger.info "keys: #{params.keys}"
+    logger.info "stripped-text: #{params['stripped-text']}"
+    
     email = params[:sender] 
     user = User.find_by_email email
     topic = /#(\w*)/.match(params[:subject])[1] # e.g "foo #tag bar"
