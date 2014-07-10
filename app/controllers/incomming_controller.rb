@@ -10,7 +10,7 @@ class IncomingController < ApplicationController
 
     email = params[:sender] 
     user = User.find_by_email email
-    topic = /#(\w*)/.match(parms[:subject])[1] # e.g "foo #tag bar"
+    topic = /#(\w*)/.match(params[:subject])[1] # e.g "foo #tag bar"
     link  = params[:stripped_text] # todo: parse link
 
     if user
