@@ -16,7 +16,7 @@ class IncomingController < ApplicationController
     user = User.find_by_email email
     topic = /#(\w*)/.match(params[:subject])[1] # e.g "foo #tag bar"
     # http://stackoverflow.com/questions/3665072/extract-url-from-text
-    link  =  URI.extract(params['stripped-text']).first
+    link  =  URI.extract(params['stripped-text'], /http(s)?/).first
 
 
     if user
