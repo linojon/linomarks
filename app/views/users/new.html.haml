@@ -1,0 +1,12 @@
+%h1 Sign up
+= simple_form_for user do |f|
+  .error_messages
+    %h2 Form is invalid
+    %ul
+      - user.errors.full_messages.each do |message|
+        %li= message
+
+  = f.input :email
+  = f.input :password
+  = f.input :password_confirmation
+  = f.submit 'Sign Up', class: 'btn btn-primary'
