@@ -1,0 +1,45 @@
+@import "bootstrap";
+
+
+// with .navbar-fixed-top (navbar is 50px high)
+body { padding-top: 50px; }
+
+// standard utility styles
+.centered {
+  text-align: center;
+}
+.align_right {
+  text-align: right;
+}
+.small {
+  font-size: x-small;
+}
+.padded {
+  padding: 1em;
+}
+
+// layout
+.navbar-fixed-top {
+  margin-bottom: 0;
+}
+
+.alert { // flash
+  margin-top: 1em;
+}
+
+#banner {
+  // background-color: #A9D5FA;
+  // background-image: image-url("lafayette-banner-2048x85.jpg");
+  // height: 85px;
+}
+
+#content {
+  min-height: 400px;
+}
+
+// #footer {
+//   color: #999;
+//   font-size: 12px;
+//   text-align: center;
+//   a { color: #999; }
+// }
